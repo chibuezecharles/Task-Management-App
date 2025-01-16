@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* calendar view css */
+.react-calendar__tile--active {
+  background-color: #3b82f6 !important; 
+  color: #ffffff !important;           
+}
+
+.react-calendar__tile--hasTask {
+  background-color: #bfdbfe !important; 
+}
