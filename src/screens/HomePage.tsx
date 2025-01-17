@@ -9,7 +9,7 @@ import TaskList from "../components/TaskList";
 import CalendarView from "../components/CalendarView";
 
 const HomePage = () => {
-  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const tasks = useSelector((state: RootState) => state.tasks?.tasks);
   const dispatch = useAppDispatch();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -21,7 +21,7 @@ const HomePage = () => {
 
   const handleAddTask = (task: Task) => {
     if (editingTask) {
-      dispatch(editTask({ id: editingTask.id, task }));
+      dispatch(editTask({ id: editingTask?.id, task }));
       setEditingTask(null);
       dispatch(setEditDetails(null));
       setShowForm(false);
@@ -43,7 +43,7 @@ const HomePage = () => {
   
 
   // Filter tasks based on the search query
-  const filteredTasks = tasks.filter((task) => {
+  const filteredTasks = tasks?.filter((task) => {
     return (
       task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       task.category.toLowerCase().includes(searchQuery.toLowerCase())||
@@ -81,7 +81,7 @@ const HomePage = () => {
           placeholder="Search tasks "
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 border rounded mb-4 md:w-3/6 sm:w-full"
+          className="w-full p-2 border rounded mb-4 md:w-3/6 sm:w-full text-black"
         />
       </div>
       

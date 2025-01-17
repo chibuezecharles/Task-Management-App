@@ -6,6 +6,7 @@ import {
   updateTask,
   deleteTask,
 } from "../../../services/taskService";
+import {showToast} from "../../../components/Notification";
 
 // Define the state type
 interface TaskState {
@@ -81,6 +82,12 @@ const taskSlice = createSlice({
       .addCase(getTasks.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch tasks.";
+        // display the error message
+        showToast({
+          title: "Error",
+          description: state.error,
+          status: "error",
+        });
       });
 
     // Add a new task
@@ -92,10 +99,21 @@ const taskSlice = createSlice({
         state.tasks.push(action.payload);
         state.loading = false;
         state.error = null;
+        // display the success message
+        showToast({
+          title: "Success",
+          description: "Task added successfully",
+          status: "success",
+        });
       })
       .addCase(addTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to add task.";
+        showToast({
+          title: "Error",
+          description: state.error,
+          status: "error",
+        });
       });
 
     // Edit a task
@@ -110,10 +128,20 @@ const taskSlice = createSlice({
         }
         state.loading = false;
         state.error = null;
+        showToast({
+          title: "Success",
+          description: "Task edited successfully",
+          status: "success",
+        });
       })
       .addCase(editTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to edit task.";
+        showToast({
+          title: "Error",
+          description: state.error,
+          status: "error",
+        });
       });
 
     // Delete a task
@@ -125,10 +153,20 @@ const taskSlice = createSlice({
         state.tasks = state.tasks.filter((t) => t.id !== action.payload);
         state.loading = false;
         state.error = null;
+        showToast({
+          title: "Success",
+          description: "Task deleted successfully",
+          status: "success",
+        });
       })
       .addCase(removeTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to delete task.";
+        showToast({
+          title: "Error",
+          description: state.error,
+          status: "error",
+        });
       });
   },
 });

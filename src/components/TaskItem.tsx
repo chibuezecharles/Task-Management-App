@@ -9,7 +9,7 @@ interface TaskItemProps {
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
   const today = new Date();
-  const dueDate = new Date(task.dueDate);
+  const dueDate = new Date(task?.dueDate);
 
   // Check if the due date is today
   const isDueToday =
@@ -21,14 +21,15 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
   const isPastDue = dueDate < today && !isDueToday;
 
   // Determine completion percentage
-  const completionWidth = task.isCompleted || isPastDue ? 100 : 0;
+  const completionWidth = task?.isCompleted || isPastDue ? 100 : 0;
 
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 bg-white shadow rounded mb-2 gap-4 md:gap-6">
       <div>
-        <h3 className="text-lg font-bold">{task.title}</h3>
-        <p className="text-gray-500">{task.description}</p>
-        <span className="text-sm text-blue-500">{task.category}</span>
+        <h3 className="text-lg font-bold">{task?.title}</h3>
+        <p className="text-gray-500">{task?.description}</p>
+        <p className="text-gray-500">{`${task?.startDate} to ${task?.dueDate}`}</p>
+        <span className="text-sm text-blue-500">{task?.category}</span>
       </div>
       <div className="my-2">
         <label>Completion:</label>
@@ -38,7 +39,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
             style={{ width: `${completionWidth}%` }}
           />
         </div>
-        {isDueToday && !task.isCompleted && (
+        {isDueToday && !task?.isCompleted && (
           <p className="text-xs text-yellow-500 mt-1">Due Today</p>
         )}
         {isPastDue && !task.isCompleted && (
@@ -56,7 +57,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onEdit }) => {
           Edit
         </button>
         <button
-          onClick={() => onDelete(task.id)}
+          onClick={() => onDelete(task?.id)}
           className="px-2 py-1 text-sm rounded text-red-500 hover:underline shadow-md"
         >
           Delete

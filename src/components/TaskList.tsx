@@ -12,12 +12,12 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onDelete, onEdit }) => {
   return (
     <div className="p-4 bg-gray-100 text-black rounded shadow">
       <h2 className="text-xl font-bold mb-4 text-center py-3">Task List</h2>
-      {tasks.length === 0 ? (
+      {tasks?.length === 0 ? (
         <p className="text-gray-500">No tasks available</p>
       ) : (
-        tasks.map((task) => (
+        tasks?.map((task) => (
           <TaskItem
-            key={task.id}
+            key={task?.id}
             task={task}
             onDelete={onDelete}
             onEdit={onEdit}

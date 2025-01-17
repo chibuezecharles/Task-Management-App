@@ -13,7 +13,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({ tasks }) => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const tasksByDate = tasks.reduce((acc: any, task) => {
-    const date = task.dueDate ? new Date(task.dueDate) : null;
+    const date = task?.dueDate ? new Date(task?.dueDate) : null;
     if (date && !isNaN(date.getTime())) {
       const formattedDate = format(date, "yyyy-MM-dd");
       if (!acc[formattedDate]) {
@@ -58,8 +58,8 @@ const CalendarView: React.FC<CalendarViewProps> = ({ tasks }) => {
       <div className="mt-4">
         <h3 className="font-bold">{formattedSelectedDate}</h3>
         <ul className="ml-4 list-disc">
-          {tasksForSelectedDate.map((task: Task) => (
-            <li key={task.id}>{task.title}</li>
+          {tasksForSelectedDate?.map((task: Task) => (
+            <li key={task?.id}>{task?.title}</li>
           ))}
         </ul>
       </div>

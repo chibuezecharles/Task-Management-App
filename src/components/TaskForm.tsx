@@ -4,6 +4,7 @@ import {taskvalidationSchema} from "../formValidationSchema";
 import { RootState } from "../redux/store";
 
 const TaskForm = ({ onSubmit }: any) => {
+  const tasks = useSelector((state: RootState) => state.tasks);
 
   const editDetails = useSelector(
     (state: RootState) => state.tasks?.editingTask
@@ -36,7 +37,7 @@ const TaskForm = ({ onSubmit }: any) => {
               placeholder="Enter task title"
               type="text"
               name="title"
-              value={values.title}
+              value={values?.title}
               onChange={handleChange}
               onBlur={handleBlur}
               className={`block p-2 border rounded text-black w-full `}
@@ -52,7 +53,7 @@ const TaskForm = ({ onSubmit }: any) => {
             <textarea
               placeholder="Enter task description"
               name="description"
-              value={values.description}
+              value={values?.description}
               onChange={handleChange}
               onBlur={handleBlur}
               className={`block p-2 border rounded text-black w-full`}
@@ -67,7 +68,7 @@ const TaskForm = ({ onSubmit }: any) => {
             <label>Category</label>
             <select
               name="category"
-              value={values.category}
+              value={values?.category}
               onChange={handleChange}
               onBlur={handleBlur}
               className={`block p-2 border rounded w-full text-black `}
@@ -83,7 +84,7 @@ const TaskForm = ({ onSubmit }: any) => {
             <input
               type="date"
               name="startDate"
-              value={values.startDate}
+              value={values?.startDate}
               onChange={handleChange}
               onBlur={handleBlur}
               className={`block p-2 border rounded text-black w-full `}
@@ -99,7 +100,7 @@ const TaskForm = ({ onSubmit }: any) => {
             <input
               type="date"
               name="dueDate"
-              value={values.dueDate}
+              value={values?.dueDate}
               onChange={handleChange}
               onBlur={handleBlur}
               className={`block p-2 border rounded text-black w-full`}
@@ -115,7 +116,7 @@ const TaskForm = ({ onSubmit }: any) => {
             <input
               type="checkbox"
               name="isCompleted"
-              checked={values.isCompleted}
+              checked={values?.isCompleted}
               onChange={handleChange}
               onBlur={handleBlur}
               className="h-4 w-4"
@@ -129,7 +130,7 @@ const TaskForm = ({ onSubmit }: any) => {
               className="mt-4 bg-blue-500 text-white p-4 rounded"
               disabled={isSubmitting}
             >
-              {editDetails?.id ? "Edit Task" : "Save Task"}
+              {tasks?.loading ? "Loading..." :editDetails?.id ? "Edit Task" : "Save Task"}
             </button>
           </div>
         </Form>
