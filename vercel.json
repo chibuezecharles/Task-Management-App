@@ -10,14 +10,14 @@
         "use": "@vercel/static"
       },
       {
-        "src": "api/json-server/index.js",
+        "src": "src/api/json-server/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/api/json-server/(.*)",
-        "dest": "/api/json-server/index.js"
+        "dest": "/src/api/json-server/index.js"
       },
       {
         "src": "/(.*)",
