@@ -6,11 +6,8 @@
         "use": "@vercel/node"
       },
       {
-        "src": "src/index.tsx",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "build"
-        }
+        "src": "dist/**",
+        "use": "@vercel/static"
       },
       {
         "src": "api/json-server/index.js",
@@ -24,7 +21,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/build/$1"
+        "dest": "/dist/$1"
       }
     ]
   }
