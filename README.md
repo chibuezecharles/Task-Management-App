@@ -1,3 +1,51 @@
+# Task Management App
+
+## Project Description
+
+This is a Task Management App built with React, TypeScript, Redux, and Tailwind CSS. It allows users to manage their tasks with features such as task creation, editing, deletion, search,dark and light mode and calendar view. The app uses `json-server` for local data storage and provides a form-based interface to manage tasks, including fields like title, description, category, start date, and due date.
+
+Key features include:
+- Task creation and editing
+- Task deletion
+- Task search functionality
+- Calendar view for tasks
+- Dark and light mode
+- Form validation using Formik and Yup
+- Styled with Tailwind CSS and Chakra UI for a responsive design
+
+## Setup Instructions
+
+Follow these steps to set up and run the app locally:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/chibuezecharles/Task-Management-App.git
+cd task-management-app
+
+### 2. Install Dependencies, Install the necessary dependencies using npm or yarn.
+npm install or yarn install
+### 3. Run the development server using Vite:
+npm run dev
+This will start the development server on http://localhost:5173.
+
+Libraries & Tools Used
+React: A JavaScript library for building user interfaces.
+Redux: A state management library for JavaScript applications.
+TypeScript: A superset of JavaScript that provides static typing.
+Vite: A fast build tool and development server.
+Tailwind CSS: A utility-first CSS framework for creating custom designs.
+Chakra UI: A component library for building accessible UIs.
+Formik & Yup: Form handling and validation library.
+json-server: A fake REST API server for rapid prototyping.
+React Router: For routing and navigation within the app.
+
+
+
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
