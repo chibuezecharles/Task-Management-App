@@ -1,9 +1,7 @@
 import axios from "axios";
 import { Task } from "../redux/features/tasks/taskTypes";
 
-// const API_URL = "http://localhost:5000/tasks";
-const API_URL = "https://task-management-app-m7du.vercel.app/api/json-server/tasks";
-
+const API_URL = "https://json-database-tyfq.onrender.com/tasks";
 
 export const fetchTasks = async (): Promise<Task[]> => {
   const response = await axios.get<Task[]>(API_URL);
